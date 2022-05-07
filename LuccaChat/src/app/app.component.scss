@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  font-size: 18px;
+}
+
+.chatroom {
+  display: flex;
+  flex-direction: column;
+}
+
+app-chatbox {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .chatroom {
+    flex-direction: row;
+  }
+  app-chatbox {
+    width: 50%;
+  }
+}

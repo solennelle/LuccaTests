@@ -1,0 +1,105 @@
+$highlight-color: #5bc9c9;
+$light-background-color: #F1F0F7;
+$light-text-color: #757575;
+
+.chatbox {
+    box-shadow: 0 0 13px 0 rgb(0 0 0 / 15%);
+    padding: 25px;
+    border-radius: 15px;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    height: 100%;
+    max-height: 650px;
+    background-color: white;
+    min-width: 300px;
+
+    .chat-top {
+        font-size: 1.2rem;
+        text-align: center;
+        font-weight: 500;
+        margin-bottom: 15px;
+        mat-divider {
+            margin-top: 20px;
+        }
+    }
+
+    .chat-discussion {
+        overflow-y: auto;
+        .message {
+            margin: 20px 0;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            word-break: break-word;
+            .text {
+                max-width: 70%;
+                border-radius: 10px 10px 10px 0;
+                background-color: $light-background-color;
+                padding: 13px 22px;
+                font-size: 0.9rem;
+            }
+    
+            &.sender {
+                align-items: flex-end;
+                .text {
+                    background-color: $highlight-color;
+                    color: white;
+                    border-radius: 10px 10px 0 10px ;
+                }
+            }
+            .timestamp {
+                color: $light-text-color;
+                margin-top: 5px;
+                font-weight: 200;
+                font-size: 0.8rem;
+            }
+        }
+
+    }
+    .chat-footer {
+        margin-top: auto;
+        .input-bar {
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+        }
+        input {
+            border: none;
+            outline: none;
+            background-color: $light-background-color;
+            border-radius: 15px;
+            padding: 10px 20px;
+            flex: 1 auto;
+            margin-right: 15px;
+        }
+        ::placeholder {
+            font-size: 0.9rem;
+        }
+        .send, .attachment {
+            transition: ease-in all .3s ;
+            color: $highlight-color;
+            border: none;
+            font-size: 2.1rem;
+            margin-left: 10px;
+            &:hover {
+                color: darken($highlight-color, 25%);
+            }
+        }
+        .send {
+            margin-top: 2px;
+        }
+        .attachment {
+            transform: rotate(125deg);
+        }
+        button {
+            background: none;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+        }
+    }
+}

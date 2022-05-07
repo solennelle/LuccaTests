@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'LuccaChat';
+  users: number[] = [];
+  constructor() { }
+
+  ngOnInit(): void {
+    for (let index = 0; index < 2; index++) {
+      this.users.push(index);
+    }
+  }
 }
