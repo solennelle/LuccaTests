@@ -1,12 +1,17 @@
 using System;
 using System.Collections.Generic;
+using LuccaDevises.Exceptions;
 using LuccaDevises.Models;
 
 namespace LuccaDevises
 {
-    static public class ShortestPath
+    public static class ShortestPath
     {
         static public int GetCurrencyExchange(Dictionary<string, Dictionary<string, decimal>> graph, Instructions instructions) {
+            if (instructions.InitialCurrency == instructions.GoalCurrency) {
+                return (int)Math.Round(instructions.Amount);
+            }
+
             var queue = new Queue<string>();
             var visited = new HashSet<string>();
             var parents = new Dictionary<string, string>();
@@ -26,8 +31,8 @@ namespace LuccaDevises
                             parents.Add(child.Key, node);
                         }
                     }
-                } catch (Exception ex){
-                    Console.WriteLine(ex.Message);
+                } catch (KeyNotFoundException) {
+                    throw new MissingCurrencyException("The entry or goal currency is not present in the list of currency rates");
                 }
             }
 
@@ -38,12 +43,12 @@ namespace LuccaDevises
             // current starts as the goal currency and we go back to the initial currency 
             // while converting the currency with each step
             while (current != initial) {
-              var parent = parents[current];
-              result *= graph[parent][current];
-              current = parent;
+               var parent = parents[current];
+               result *= graph[parent][current];
+               current = parent;
             }
 
-            return (int)Math.Ceiling(result);
+            return (int)Math.Round(result);
         }
     }
 }
