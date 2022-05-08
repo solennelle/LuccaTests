@@ -1,3 +1,6 @@
 <div class="chatroom">
-    <app-chatbox [id]="user" *ngFor="let user of users"></app-chatbox>
+    <app-chatbox [id]="user" *ngFor="let user of users" (closeWindow)="removeUser($event)"></app-chatbox>
+    <button class="add-user" [disabled]="isDisabled" (click)="addUser()" [ngClass]="{'disabled': isDisabled}" mat-fab aria-label="Add user">
+        <mat-icon [matTooltip]="isDisabled ? maxUsersMessage : ''" matTooltipPosition="above">add</mat-icon>
+    </button>
 </div>

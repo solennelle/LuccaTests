@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { finalize, take } from 'rxjs/operators';
 import { IMessage } from '../../messages/models/message';
@@ -14,8 +14,9 @@ export class ChatboxComponent implements OnInit, OnDestroy {
 
   messages: IMessage[] = [];
   textMessage: string = '';
-
+  error: string = '';
   @Input() id: number;
+  @Output() closeWindow: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(private messageService: MessagesService) { }
 
@@ -32,14 +33,14 @@ export class ChatboxComponent implements OnInit, OnDestroy {
       if(this.subscription) this.subscription.unsubscribe();
   }
 
-  send(){
+  send():void {
     if (this.textMessage === '') return;
-
     let message: IMessage  = {
       sender: this.id,
       textMessage: this.textMessage,
       date: new Date()
     };
+    
     this.messageService.send(message)
     .pipe(
       take(1),
@@ -48,7 +49,11 @@ export class ChatboxComponent implements OnInit, OnDestroy {
       }),
       )
     .subscribe({
-      error:(err) => {console.log('oups')} 
+      error:(err) => { this.error = 'Une erreur est survenue lors de l\'envoi du message' } 
     });
+  }
+
+  close(): void {
+    this.closeWindow.emit(this.id);
   }
 }

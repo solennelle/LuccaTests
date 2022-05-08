@@ -7,6 +7,8 @@ import { ChatModule } from './chat/chat.module';
 import { MessagesModule } from './messages/messages.module';
 import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 registerLocaleData(localeFr);
 
@@ -18,7 +20,9 @@ registerLocaleData(localeFr);
     BrowserModule,
     BrowserAnimationsModule,
     MessagesModule,
-    ChatModule
+    ChatModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
   bootstrap: [AppComponent]

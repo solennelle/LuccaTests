@@ -1,32 +1,47 @@
-$highlight-color: #5bc9c9;
-$light-background-color: #F1F0F7;
-$light-text-color: #757575;
+@import '../../_variables';
 
 .chatbox {
     box-shadow: 0 0 13px 0 rgb(0 0 0 / 15%);
-    padding: 25px;
+    padding: 20px 25px;
     border-radius: 15px;
     min-height: 700px;
     display: flex;
     flex-direction: column;
-    margin: 20px;
+    margin: 20px auto;
     height: 100%;
     max-height: 650px;
     background-color: white;
     min-width: 300px;
+
+    @media screen and (min-width: 768px) {
+        min-width: 400px;
+    }
 
     .chat-top {
         font-size: 1.2rem;
         text-align: center;
         font-weight: 500;
         margin-bottom: 15px;
+        position: relative;
+
         mat-divider {
             margin-top: 20px;
+        }
+
+        .clear {
+            position: absolute;
+            right: 0;
+            color: $highlight-color;
+            transition: ease-in all .3s ;
+            &:hover {
+                color: $highlight-hover-color;
+            }
         }
     }
 
     .chat-discussion {
         overflow-y: auto;
+
         .message {
             margin: 20px 0;
             display: flex;
@@ -60,6 +75,19 @@ $light-text-color: #757575;
     }
     .chat-footer {
         margin-top: auto;
+        padding-top: 20px;
+        .error {
+            margin: auto;
+            color: $danger;
+            float: right;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            mat-icon {
+                font-size: 1.4rem;
+                vertical-align: sub;
+            }
+            
+        }
         .input-bar {
             width: 100%;
             box-sizing: border-box;
@@ -77,29 +105,16 @@ $light-text-color: #757575;
         ::placeholder {
             font-size: 0.9rem;
         }
-        .send, .attachment {
+        .send {
+            margin-top: 2px;
             transition: ease-in all .3s ;
             color: $highlight-color;
             border: none;
             font-size: 2.1rem;
-            margin-left: 10px;
+            margin-left: 5px;
             &:hover {
-                color: darken($highlight-color, 25%);
+                color: $highlight-hover-color;
             }
-        }
-        .send {
-            margin-top: 2px;
-        }
-        .attachment {
-            transform: rotate(125deg);
-        }
-        button {
-            background: none;
-            border: none;
-            padding: 0;
-            font: inherit;
-            cursor: pointer;
-            outline: inherit;
         }
     }
 }
