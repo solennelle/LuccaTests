@@ -1,120 +1,118 @@
-@import '../../_variables';
+@import "../../_variables";
 
 .chatbox {
-    box-shadow: 0 0 13px 0 rgb(0 0 0 / 15%);
-    padding: 20px 25px;
-    border-radius: 15px;
-    min-height: 700px;
-    display: flex;
-    flex-direction: column;
-    margin: 20px auto;
-    height: 100%;
-    max-height: 650px;
-    background-color: white;
-    min-width: 300px;
+  box-shadow: 0 0 13px 0 rgb(0 0 0 / 15%);
+  padding: 20px 25px;
+  border-radius: 15px;
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  height: 100%;
+  max-height: 650px;
+  background-color: white;
+  width: 300px;
 
-    @media screen and (min-width: 768px) {
-        min-width: 400px;
+  @media screen and (min-width: 768px) {
+    width: 400px;
+  }
+
+  .chat-top {
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 15px;
+    position: relative;
+
+    mat-divider {
+      margin-top: 20px;
     }
 
-    .chat-top {
-        font-size: 1.2rem;
-        text-align: center;
-        font-weight: 500;
-        margin-bottom: 15px;
-        position: relative;
-
-        mat-divider {
-            margin-top: 20px;
-        }
-
-        .clear {
-            position: absolute;
-            right: 0;
-            color: $highlight-color;
-            transition: ease-in all .3s ;
-            &:hover {
-                color: $highlight-hover-color;
-            }
-        }
+    .clear {
+      position: absolute;
+      right: 0;
+      color: $highlight-color;
+      transition: ease-in all 0.3s;
+      &:hover {
+        color: $highlight-hover-color;
+      }
     }
+  }
 
-    .chat-discussion {
-        overflow-y: auto;
+  .chat-discussion {
+    overflow-y: auto;
 
-        .message {
-            margin: 20px 0;
-            display: flex;
-            align-items: flex-start;
-            flex-direction: column;
-            word-break: break-word;
-            .text {
-                max-width: 70%;
-                border-radius: 10px 10px 10px 0;
-                background-color: $light-background-color;
-                padding: 13px 22px;
-                font-size: 0.9rem;
-            }
-    
-            &.sender {
-                align-items: flex-end;
-                .text {
-                    background-color: $highlight-color;
-                    color: white;
-                    border-radius: 10px 10px 0 10px ;
-                }
-            }
-            .timestamp {
-                color: $light-text-color;
-                margin-top: 5px;
-                font-weight: 200;
-                font-size: 0.8rem;
-            }
+    .message {
+      margin: 20px 0;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      word-break: break-word;
+      .text {
+        max-width: 70%;
+        border-radius: 10px 10px 10px 0;
+        background-color: $light-background-color;
+        padding: 13px 22px;
+        font-size: 0.9rem;
+      }
+
+      &.sender {
+        align-items: flex-end;
+        .text {
+          background-color: $highlight-color;
+          color: white;
+          border-radius: 10px 10px 0 10px;
         }
-
+      }
+      .timestamp {
+        color: $light-text-color;
+        margin-top: 5px;
+        font-weight: 200;
+        font-size: 0.8rem;
+      }
     }
-    .chat-footer {
-        margin-top: auto;
-        padding-top: 20px;
-        .error {
-            margin: auto;
-            color: $danger;
-            float: right;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            mat-icon {
-                font-size: 1.4rem;
-                vertical-align: sub;
-            }
-            
-        }
-        .input-bar {
-            width: 100%;
-            box-sizing: border-box;
-            display: flex;
-        }
-        input {
-            border: none;
-            outline: none;
-            background-color: $light-background-color;
-            border-radius: 15px;
-            padding: 10px 20px;
-            flex: 1 auto;
-            margin-right: 15px;
-        }
-        ::placeholder {
-            font-size: 0.9rem;
-        }
-        .send {
-            margin-top: 2px;
-            transition: ease-in all .3s ;
-            color: $highlight-color;
-            border: none;
-            font-size: 2.1rem;
-            margin-left: 5px;
-            &:hover {
-                color: $highlight-hover-color;
-            }
-        }
+  }
+  .chat-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    .error {
+      margin: auto;
+      color: $danger;
+      float: right;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      mat-icon {
+        font-size: 1.4rem;
+        vertical-align: sub;
+      }
     }
+    .input-bar {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+    }
+    input {
+      border: none;
+      outline: none;
+      background-color: $light-background-color;
+      border-radius: 15px;
+      padding: 10px 20px;
+      flex: 1 auto;
+      margin-right: 15px;
+    }
+    ::placeholder {
+      font-size: 0.9rem;
+    }
+    .send {
+      margin-top: 2px;
+      transition: ease-in all 0.3s;
+      color: $highlight-color;
+      border: none;
+      font-size: 2.1rem;
+      margin-left: 5px;
+      &:hover {
+        color: $highlight-hover-color;
+      }
+    }
+  }
 }

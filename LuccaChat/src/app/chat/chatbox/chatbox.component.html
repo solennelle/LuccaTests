@@ -1,20 +1,28 @@
 <div class="chatbox">
     <div class="chat-top">
         Discussion
-        <button class="clear" (click)="close()"><mat-icon>clear</mat-icon></button>
+        <button class="clear" (click)="close()">
+            <mat-icon>clear</mat-icon>
+        </button>
         <mat-divider></mat-divider>
     </div>
     <div class="chat-discussion">
-        <div *ngFor="let message of messages" class="message receiver" [ngClass]="message.sender === id ? 'sender' : 'receiver'">
+        <div *ngFor="let message of messages" class="message receiver"
+            [ngClass]="message.sender === id ? 'sender' : 'receiver'">
             <div class="text">{{ message.textMessage }}</div>
             <span class="timestamp">{{ message.date | date: 'medium' }}</span>
         </div>
     </div>
     <div class="chat-footer">
-        <div class="error" *ngIf="error"><mat-icon>report_problem</mat-icon> {{ error }}</div>
+        <div class="error" *ngIf="error">
+            <mat-icon>report_problem</mat-icon> {{ error }}
+        </div>
         <div class="input-bar">
-            <input (keydown.enter)="send()" type="text" [(ngModel)]="textMessage" placeholder="Entrez votre texte ici..."/>
-            <button (click)="send()"><mat-icon class="send">send</mat-icon></button>
+            <input (keydown.enter)="send()" type="text" [(ngModel)]="textMessage"
+                placeholder="Entrez votre texte ici..." />
+            <button (click)="send()">
+                <mat-icon class="send">send</mat-icon>
+            </button>
         </div>
     </div>
 </div>
